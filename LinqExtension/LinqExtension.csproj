@@ -13,6 +13,6 @@
         <RepositoryType>Git</RepositoryType>
         <PackageLicenseUrl>https://github.com/remihenache/LinqExtension/blob/main/LICENCE</PackageLicenseUrl>
         <PackageTags>Linq, Async Linq, Linq Extension</PackageTags>
-        <Version>1.0.1</Version>
+        <Version>1.0.3</Version>
     </PropertyGroup>
 </Project>

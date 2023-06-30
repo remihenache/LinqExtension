@@ -7,7 +7,7 @@ public class ForeachExtensionTest
     {
         ForeachSpy spy = new();
         IEnumerable<Int32> source = new[] {1, 2, 3, 4, 5};
-        source.ForEachAsync(spy.Increment);
+        source.ForEach(spy.Increment);
         Assert.That(spy.NbTimeIncremented, Is.EqualTo(5));
     }
 

@@ -4,7 +4,7 @@ namespace System.Linq;
 
 public static class ForeachExtensions
 {
-    public static void ForEachAsync<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
+    public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
     {
         foreach (TSource element in source) action(element);
     }
