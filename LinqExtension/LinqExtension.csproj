@@ -4,6 +4,15 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>LinqExtension</Title>
+        <Authors>R. Henache</Authors>
+        <Description>Linq extension for Async enumerable</Description>
+        <PackageProjectUrl>https://github.com/remihenache/LinqExtension</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/remihenache/LinqExtension</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageLicenseUrl>https://github.com/remihenache/LinqExtension/blob/main/LICENCE</PackageLicenseUrl>
+        <PackageTags>Linq, Async Linq, Linq Extension</PackageTags>
     </PropertyGroup>
 
 </Project>
