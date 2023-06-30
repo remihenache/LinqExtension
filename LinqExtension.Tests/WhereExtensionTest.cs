@@ -23,7 +23,7 @@ public class WhereExtensionTest
     public async Task AsynchronousEnumerableShouldBeFiltered()
     {
         Task<IEnumerable<Int32>> source = Task.FromResult<IEnumerable<Int32>>(new[] {1, 2, 3, 4, 5});
-        IEnumerable<Int32> result = await source.Where(GreaterThan2);
+        IEnumerable<Int32> result = await source.WhereAsync(GreaterThan2);
         Assert.That(result.Count(), Is.EqualTo(3));
     }
 
@@ -31,7 +31,7 @@ public class WhereExtensionTest
     public void IAsyncEnumerableShouldBeFiltered()
     {
         IAsyncEnumerable<Int32> source = new[] {1, 2, 3, 4, 5}.ToAsyncEnumerable();
-        IEnumerable<Int32> result = source.Where(GreaterThan2).ToBlockingEnumerable();
+        IEnumerable<Int32> result = source.WhereAsync(GreaterThan2).ToBlockingEnumerable();
         Assert.That(result.Count(), Is.EqualTo(3));
     }
 

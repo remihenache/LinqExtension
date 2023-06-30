@@ -23,7 +23,7 @@ public class SelectExtensionTest
     public async Task AsynchronousEnumerableShouldBeTransformed()
     {
         Task<IEnumerable<Int32>> source = Task.FromResult<IEnumerable<Int32>>(new[] {1, 2, 3, 4, 5});
-        IEnumerable<String> result = await source.Select(ToString);
+        IEnumerable<String> result = await source.SelectAsync(ToString);
         Assert.That(result, Is.EquivalentTo(new[] {"1", "2", "3", "4", "5"}));
     }
 
@@ -39,7 +39,7 @@ public class SelectExtensionTest
     public void IAsyncEnumerableShouldBeTransformed()
     {
         IAsyncEnumerable<Int32> source = new[] {1, 2, 3, 4, 5}.ToAsyncEnumerable();
-        IEnumerable<String> result = source.Select(ToString).ToBlockingEnumerable();
+        IEnumerable<String> result = source.SelectAsync(ToString).ToBlockingEnumerable();
         Assert.That(result, Is.EquivalentTo(new[] {"1", "2", "3", "4", "5"}));
     }
 

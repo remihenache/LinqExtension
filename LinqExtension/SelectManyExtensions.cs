@@ -4,7 +4,7 @@ namespace System.Linq;
 
 public static class SelectManyExtensions
 {
-    public static async IAsyncEnumerable<TResult> SelectMany<TSource, TResult>(this Task<IEnumerable<TSource>> source,
+    public static async IAsyncEnumerable<TResult> SelectManyAsync<TSource, TResult>(this Task<IEnumerable<TSource>> source,
         Func<TSource, IEnumerable<TResult>> method)
     {
         foreach (TSource element in await source)
@@ -46,7 +46,7 @@ public static class SelectManyExtensions
         }
     }
 
-    public static async IAsyncEnumerable<TResult> SelectMany<TSource, TResult>(this IAsyncEnumerable<TSource> source,
+    public static async IAsyncEnumerable<TResult> SelectManyAsync<TSource, TResult>(this IAsyncEnumerable<TSource> source,
         Func<TSource, IEnumerable<TResult>> method)
     {
         await foreach(TSource element in source)

@@ -11,7 +11,7 @@ public static class WhereExtensions
     /// <param name="method">Filter method</param>
     /// <typeparam name="TSource">Type of source elements</typeparam>
     /// <returns>Task having the filtered elements</returns>
-    public static async Task<IEnumerable<TSource>> Where<TSource>(this Task<IEnumerable<TSource>> source,
+    public static async Task<IEnumerable<TSource>> WhereAsync<TSource>(this Task<IEnumerable<TSource>> source,
         Func<TSource, Boolean> method)
     {
         return (await source).Where(method);
@@ -24,7 +24,7 @@ public static class WhereExtensions
     /// <param name="method">Filter method</param>
     /// <typeparam name="TSource">Type of source elements</typeparam>
     /// <returns>Task having the filtered elements</returns>
-    public static async IAsyncEnumerable<TSource> Where<TSource>(this IAsyncEnumerable<TSource> source,
+    public static async IAsyncEnumerable<TSource> WhereAsync<TSource>(this IAsyncEnumerable<TSource> source,
         Func<TSource, Boolean> method)
     {
         await foreach(TSource element in source)

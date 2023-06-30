@@ -55,7 +55,7 @@ public class SelectManyExtensionTest
             }
         };
         Task<IEnumerable<ObjectHavingInt>> sourceTask = Task.FromResult(source);
-        IEnumerable<Int32> result = sourceTask.SelectMany(GetInt).ToBlockingEnumerable();
+        IEnumerable<Int32> result = sourceTask.SelectManyAsync(GetInt).ToBlockingEnumerable();
         Assert.That(result, Is.EquivalentTo(new[] {1, 1, 1, 2, 2, 2}));
     }
 
@@ -93,7 +93,7 @@ public class SelectManyExtensionTest
             }
         };
         IAsyncEnumerable<ObjectHavingInt> source = intsArray.ToAsyncEnumerable();
-        IEnumerable<Int32> result = source.SelectMany(GetInt).ToBlockingEnumerable();
+        IEnumerable<Int32> result = source.SelectManyAsync(GetInt).ToBlockingEnumerable();
         Assert.That(result, Is.EquivalentTo(new[] {1, 1, 1, 2, 2, 2}));
     }
 

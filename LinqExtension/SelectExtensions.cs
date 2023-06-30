@@ -12,7 +12,7 @@ public static class SelectExtensions
     /// <typeparam name="TSource">Type of source elements</typeparam>
     /// <typeparam name="TResult">Return type of transform method</typeparam>
     /// <returns>Asynchronous enumeration of transformed elements</returns>
-    public static async Task<IEnumerable<TResult>> Select<TSource, TResult>(this Task<IEnumerable<TSource>> source,
+    public static async Task<IEnumerable<TResult>> SelectAsync<TSource, TResult>(this Task<IEnumerable<TSource>> source,
         Func<TSource, TResult> method)
     {
         return (await source).Select(method);
@@ -26,7 +26,7 @@ public static class SelectExtensions
     /// <typeparam name="TSource">Type of source elements</typeparam>
     /// <typeparam name="TResult">Return type of transform method</typeparam>
     /// <returns>Asynchronous enumeration of transformed elements</returns>
-    public static async IAsyncEnumerable<TResult> Select<TSource, TResult>(this IAsyncEnumerable<TSource> source,
+    public static async IAsyncEnumerable<TResult> SelectAsync<TSource, TResult>(this IAsyncEnumerable<TSource> source,
         Func<TSource, TResult> method)
     {
         await foreach(TSource element in source) 

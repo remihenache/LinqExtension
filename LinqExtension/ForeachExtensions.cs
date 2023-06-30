@@ -4,12 +4,12 @@ namespace System.Linq;
 
 public static class ForeachExtensions
 {
-    public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
+    public static void ForEachAsync<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
     {
         foreach (TSource element in source) action(element);
     }
 
-    public static async Task ForEach<TSource>(this Task<IEnumerable<TSource>> source, Action<TSource> action)
+    public static async Task ForEachAsync<TSource>(this Task<IEnumerable<TSource>> source, Action<TSource> action)
     {
         foreach (TSource element in await source) action(element);
     }
@@ -24,7 +24,7 @@ public static class ForeachExtensions
         foreach (TSource element in await source) await action(element);
     }
 
-    public static async Task ForEach<TSource>(this IAsyncEnumerable<TSource> source, Action<TSource> action)
+    public static async Task ForEachAsync<TSource>(this IAsyncEnumerable<TSource> source, Action<TSource> action)
     {
         await foreach(TSource element in source) action(element);
     }

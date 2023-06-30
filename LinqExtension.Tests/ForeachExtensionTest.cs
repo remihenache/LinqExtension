@@ -7,7 +7,7 @@ public class ForeachExtensionTest
     {
         ForeachSpy spy = new();
         IEnumerable<Int32> source = new[] {1, 2, 3, 4, 5};
-        source.ForEach(spy.Increment);
+        source.ForEachAsync(spy.Increment);
         Assert.That(spy.NbTimeIncremented, Is.EqualTo(5));
     }
 
@@ -16,7 +16,7 @@ public class ForeachExtensionTest
     {
         ForeachSpy spy = new();
         IAsyncEnumerable<Int32> source = new[] {1, 2, 3, 4, 5}.ToAsyncEnumerable();
-        await source.ForEach(spy.Increment);
+        await source.ForEachAsync(spy.Increment);
         Assert.That(spy.NbTimeIncremented, Is.EqualTo(5));
     }
 
@@ -43,7 +43,7 @@ public class ForeachExtensionTest
     {
         ForeachSpy spy = new();
         Task<IEnumerable<Int32>> source = Task.FromResult<IEnumerable<Int32>>(new[] {1, 2, 3, 4, 5});
-        await source.ForEach(spy.Increment);
+        await source.ForEachAsync(spy.Increment);
         Assert.That(spy.NbTimeIncremented, Is.EqualTo(5));
     }
 
