@@ -19,6 +19,24 @@ public class ListExtensionTest
         Assert.That(result, Is.EquivalentTo(new[] {1, 2, 3, 4, 5}));
     }
 
+    
+    [Test]
+    public async Task AsyncEnumerableShouldBeTransformedAsynchronousToArray()
+    {
+        IEnumerable<Int32> source = new[] {1, 2, 3, 4, 5};
+        String[] result = await source.SelectAsync(ToStringAsync).ToArrayAsync();
+        Assert.That(result, Is.EquivalentTo(new[] {"1", "2", "3", "4", "5"}));
+    }
+
+
+    [Test]
+    public async Task TaskEnumerableShouldBeTransformedAsynchronousToArray()
+    {
+        Task<IEnumerable<Int32>> source = Task.FromResult<IEnumerable<Int32>>(new[] {1, 2, 3, 4, 5});
+        Int32[] result = await source.ToArrayAsync();
+        Assert.That(result, Is.EquivalentTo(new[] {1, 2, 3, 4, 5}));
+    }
+    
     private static Task<String> ToStringAsync(Int32 arg)
     {
         return Task.FromResult(arg.ToString());

@@ -76,4 +76,83 @@ public static class SelectExtensions
         await foreach(TSource element in source)
             yield return await method(element);
     }
+    
+    
+    
+    /// <summary>
+    ///     Project each element from an asynchronous source
+    /// </summary>
+    /// <param name="source">Asynchronous source to project</param>
+    /// <param name="method">Transform function</param>
+    /// <typeparam name="TSource">Type of source elements</typeparam>
+    /// <typeparam name="TResult">Return type of transform method</typeparam>
+    /// <returns>Asynchronous enumeration of transformed elements</returns>
+    public static async Task<IEnumerable<TResult>> SelectAsync<TSource, TResult>(this Task<IEnumerable<TSource>> source,
+        Func<TSource, Int32, TResult> method)
+    {
+        return (await source).Select(method);
+    }
+
+    /// <summary>
+    ///     Project each element from an asynchronous source
+    /// </summary>
+    /// <param name="source">Asynchronous source to project</param>
+    /// <param name="method">Transform function</param>
+    /// <typeparam name="TSource">Type of source elements</typeparam>
+    /// <typeparam name="TResult">Return type of transform method</typeparam>
+    /// <returns>Asynchronous enumeration of transformed elements</returns>
+    public static async IAsyncEnumerable<TResult> SelectAsync<TSource, TResult>(this IAsyncEnumerable<TSource> source,
+        Func<TSource, Int32, TResult> method)
+    {
+        Int32 index = 0;
+        await foreach(TSource element in source) 
+            yield return method(element, index++);
+    }
+
+    /// <summary>
+    ///     Project each element using an asynchronous transformation from a source
+    /// </summary>
+    /// <param name="source">Source to project</param>
+    /// <param name="method">Asynchronous transform function</param>
+    /// <typeparam name="TSource">Type of source elements</typeparam>
+    /// <typeparam name="TResult">Return type of transform method</typeparam>
+    /// <returns>Asynchronous enumeration of transformed elements</returns>
+    public static async IAsyncEnumerable<TResult> SelectAsync<TSource, TResult>(this IEnumerable<TSource> source,
+        Func<TSource, Int32, Task<TResult>> method)
+    {
+        Int32 index = 0;
+        foreach (TSource element in source) yield return await method(element, index++);
+    }
+
+    /// <summary>
+    ///     Project each element using an asynchronous transformation from an asynchronous source
+    /// </summary>
+    /// <param name="source">Asynchronous source to project</param>
+    /// <param name="method">Asynchronous transform function</param>
+    /// <typeparam name="TSource">Type of source elements</typeparam>
+    /// <typeparam name="TResult">Return type of transform method</typeparam>
+    /// <returns>Asynchronous enumeration of transformed elements</returns>
+    public static async IAsyncEnumerable<TResult> SelectAsync<TSource, TResult>(this Task<IEnumerable<TSource>> source,
+        Func<TSource, Int32, Task<TResult>> method)
+    {
+        Int32 index = 0;
+        foreach (TSource element in await source) yield return await method(element, index++);
+    }
+
+
+    /// <summary>
+    ///     Project each element using an asynchronous transformation from an asynchronous source
+    /// </summary>
+    /// <param name="source">Asynchronous source to project</param>
+    /// <param name="method">Asynchronous transform function</param>
+    /// <typeparam name="TSource">Type of source elements</typeparam>
+    /// <typeparam name="TResult">Return type of transform method</typeparam>
+    /// <returns>Asynchronous enumeration of transformed elements</returns>
+    public static async IAsyncEnumerable<TResult> SelectAsync<TSource, TResult>(this IAsyncEnumerable<TSource> source,
+        Func<TSource, Int32, Task<TResult>> method)
+    {
+        Int32 index = 0;
+        await foreach(TSource element in source)
+            yield return await method(element, index++);
+    }
 }
