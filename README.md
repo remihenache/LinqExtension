@@ -3,10 +3,11 @@
 This project provides a set of extension methods that enhance the LINQ (Language Integrated Query) functionality in C# by adding support for asynchronous operations. It includes extensions for common LINQ operations such as Select, SelectMany, and Where, allowing developers to work with asynchronous sources and transformations.
 
 # Install
+To use these extensions, install the nuget package for your C# project and ensure that the appropriate namespaces (System.Linq, etc.) are referenced. Make sure that you have the necessary dependencies and target framework version set correctly.
 ```shell
 dotnet add package LinqExtension
 ```
-
+# Usages
 ## ForeachExtensions
 The ForeachExtensions class contains extension methods for asynchronous iteration over collections using foreach loops. It includes the following methods:
 
@@ -42,8 +43,7 @@ The WhereExtensions class adds async filtering capabilities to the Where operati
 - WhereAsync (for Task<IEnumerable>): Filters elements asynchronously using an asynchronous condition.
 - WhereAsync (for IAsyncEnumerable): Filters elements asynchronously using an asynchronous condition.
 
-# Usage
-To use these extensions, include the provided code in your C# project and ensure that the appropriate namespaces (System.Linq, etc.) are referenced. Make sure that you have the necessary dependencies and target framework version set correctly.
+
 
 Feel free to explore and leverage these extensions to incorporate async operations into your LINQ queries.
 
