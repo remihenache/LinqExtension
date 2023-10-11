@@ -2,6 +2,11 @@
 
 This project provides a set of extension methods that enhance the LINQ (Language Integrated Query) functionality in C# by adding support for asynchronous operations. It includes extensions for common LINQ operations such as Select, SelectMany, and Where, allowing developers to work with asynchronous sources and transformations.
 
+# Install
+```shell
+dotnet add package LinqExtension
+```
+
 ## ForeachExtensions
 The ForeachExtensions class contains extension methods for asynchronous iteration over collections using foreach loops. It includes the following methods:
 
